@@ -24,14 +24,19 @@ export const mutations: MutationTree<State> = {
 
 export const actions: ActionTree<State, any> = {
   async addTodoAsync(context, id) {
-    const url = 'https://jsonplaceholder.typicode.com/todos/' + id;
-    const response = await fetch(url).then((res) => res.json());
-    const todo: Todo = {
-      id: v4(),
-      title: response.title,
-      completed: false,
-    };
-    context.commit('addTodo', todo);
+    try {
+      const url = 'https://jsonplaceholder.typicode.com/todos/' + id;
+      const response = await fetch(url).then((res) => res.json());
+      const todo: Todo = {
+        id: v4(),
+        title: response.title,
+        completed: false,
+      };
+      context.commit('addTodo', todo);
+    } catch (error) {
+      // tslint:disable-next-line: no-console
+      console.error(error);
+    }
   },
 };
 

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import TodoList from '@/components/TodoList.vue';
+import TodoList from '@/components/todo/TodoList.vue';
 
 @Component({
   components: {
