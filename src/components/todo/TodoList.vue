@@ -1,17 +1,31 @@
 <template>
   <div>
     <h1>Todos</h1>
-    <ul>
+    <v-list>
       <todo-item v-for="todo in todos" :key="todo.id" :todo="todo" />
-    </ul>
+    </v-list>
     <h1>Dones</h1>
-    <ul>
+    <v-list>
       <todo-item v-for="done in dones" :key="done.id" :todo="done" />
-    </ul>
+    </v-list>
     <p>
-      <input type="text" v-model="newTodo.title" @keydown.enter="addTodo(newTodo)" />
-      <input type="text" v-model="id" @keydown.enter="addTodoAsync(id)" />
-      <button @click="addTodoAsync(id)">Add async</button>
+      <v-text-field
+        v-model="newTodo.title"
+        @keydown.enter="addTodo(newTodo)"
+        label="Add new todo"
+        placeholder="Todo name"
+        outline
+      ></v-text-field>
+      <v-text-field
+        v-model="id"
+        @keydown.enter="addTodoAsync(id)"
+        label="Add todo async"
+        placeholder="Todo name"
+        outline
+      ></v-text-field>
+      <v-btn depressed @click="addTodoAsync(id)">
+        <span>Add async</span>
+      </v-btn>
     </p>
   </div>
 </template>
